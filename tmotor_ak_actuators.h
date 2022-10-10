@@ -10,7 +10,7 @@ namespace TMotorAkActuators
    */
   class AkActuators
   {
-public:
+  public:
     typedef void (*canSendFunc_t)(uint32_t id, uint8_t dlc, uint8_t *data);
 
     typedef struct
@@ -31,17 +31,16 @@ public:
       float kdMin;
     } motorParameters_t;
 
-    motorParameters_t AK10_9_v1_1 = {
-        -12.5,
-        12.5,
-        -50,
-        50,
-        -65,
-        65,
-        0,
-        500,
-        0,
-        5};
+    motorParameters_t AK10_9_v1_1 = {-12.5,
+                                     12.5,
+                                     -50,
+                                     50,
+                                     -65,
+                                     65,
+                                     0,
+                                     500,
+                                     0,
+                                     5};
 
     typedef struct
     {
@@ -51,7 +50,7 @@ public:
       float torque;
     } motorState_t;
 
-private:
+  private:
     uint16_t id;
 
     canSendFunc_t canSend;
@@ -60,7 +59,7 @@ private:
     uint32_t floatToUint(float val, float min, float max, uint8_t bits);
     float uintToFloat(uint32_t val, float min, float max, uint8_t bits);
 
-public:
+  public:
     /**
      * @brief Construct a new AK actuators object.
      *
@@ -69,7 +68,6 @@ public:
      * @param canSendFunc CAN Bus send message function.
      */
     AkActuators(uint16_t motorId, motorParameters_t motorParas, canSendFunc_t canSendFunc);
-    ~AkActuators();
 
     /**
      * @brief Enter motor control mode.

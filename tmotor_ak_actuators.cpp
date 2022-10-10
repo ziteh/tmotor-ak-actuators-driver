@@ -11,50 +11,21 @@ namespace TMotorAkActuators
     disable();
   }
 
-  AkActuators::~AkActuators()
-  {
-    disable();
-  }
-
   void AkActuators::enable(void)
   {
-    uint8_t data[] = {
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFC};
+    uint8_t data[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFC};
     canSend(id, 8, data);
   }
 
   void AkActuators::disable(void)
   {
-    uint8_t data[] = {
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFD};
+    uint8_t data[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFD};
     canSend(id, 8, data);
   }
 
   void AkActuators::setZeroPosition(void)
   {
-    uint8_t data[] = {
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFF,
-        0xFE};
+    uint8_t data[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE};
     canSend(id, 8, data);
   }
 
