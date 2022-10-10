@@ -62,9 +62,9 @@ private:
 
 public:
     /**
-     * @brief Construct a new Ak Actuators object.
+     * @brief Construct a new AK actuators object.
      *
-     * @param motorId Motor ID, same to CAN id.
+     * @param motorId Motor ID, same as CAN id.
      * @param motorParas Motor parameters.
      * @param canSendFunc CAN Bus send message function.
      */
@@ -109,4 +109,4 @@ public:
 
 }
 
-#endif /* TMOTOR_AK_ACTUATORS_H_*/
+#endif /* TMOTOR_AK_ACTUATORS_H_ */
