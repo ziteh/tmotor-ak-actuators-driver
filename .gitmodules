@@ -1,3 +1,3 @@
 [submodule "examples/ak10-9_test/lib/mcp2515-driver"]
-	path = examples/ak10-9_test/lib/mcp2515-driver
+	path = examples/stm32/lib/mcp2515-driver
 	url = https://github.com/ziteh/mcp2515-driver.git
