@@ -2,7 +2,10 @@
 
 T-Motor/CubeMars AK series actuators (MIT Mini-Cheetah type) library
 
+
 ## Usage
+[STM32 example](./examples/stm32/)
+
 ```cpp
 void sendCanData(uint32_t id, uint8_t dlc, uint8_t *data)
 {
