@@ -10,40 +10,41 @@
 /// @brief T-Motor/CubMars actuators.
 namespace TMotorActuators
 {
+  typedef struct
+  {
+    float positionMin;
+    float positionMax;
+
+    float velocityMin;
+    float velocityMax;
+
+    float torqueMin;
+    float torqueMax;
+
+    float kpMin;
+    float kpMax;
+
+    float kdMin;
+    float kdMax;
+  } MotorParameters;
+
+  /// @brief AK10-9 V1.1
+  const MotorParameters ak10_9_v1_1 = {-12.5,
+                                       12.5,
+                                       -50,
+                                       50,
+                                       -65,
+                                       65,
+                                       0,
+                                       500,
+                                       0,
+                                       5};
+
   /// @brief AK series actuators/motor.
   class AkActuators
   {
   public:
     typedef void (*SendCanDataFunction)(uint32_t id, uint8_t dlc, uint8_t *data);
-
-    typedef struct
-    {
-      float positionMax;
-      float positionMin;
-
-      float velocityMax;
-      float velocityMin;
-
-      float torqueMax;
-      float torqueMin;
-
-      float kpMax;
-      float kpMin;
-
-      float kdMax;
-      float kdMin;
-    } MotorParameters;
-
-    MotorParameters ak10_9_v1_1 = {-12.5,
-                                   12.5,
-                                   -50,
-                                   50,
-                                   -65,
-                                   65,
-                                   0,
-                                   500,
-                                   0,
-                                   5};
 
     typedef struct
     {
@@ -60,8 +61,8 @@ namespace TMotorActuators
 
     /// @brief Send CAN Bus data function.
     SendCanDataFunction sendCanData;
-    uint32_t convFloatToUint(float val, float min, float max, uint8_t bits);
-    float convUintToFloat(uint32_t val, float min, float max, uint8_t bits);
+    int32_t convFloatToUint(float val, float min, float max, uint8_t bits);
+    float convUintToFloat(int32_t val, float min, float max, uint8_t bits);
 
   public:
     /// @brief Construct a new AK actuators object.

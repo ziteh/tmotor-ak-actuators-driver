@@ -35,11 +35,11 @@ namespace TMotorActuators
 
   void AkActuators::move(float position, float velocity, float torque, float kp, float kd)
   {
-    uint16_t pInt = convFloatToUint(position, mMotorParameters.positionMin, mMotorParameters.positionMax, 16);
-    uint16_t vInt = convFloatToUint(velocity, mMotorParameters.velocityMin, mMotorParameters.velocityMax, 12);
-    uint16_t tInt = convFloatToUint(torque, mMotorParameters.torqueMin, mMotorParameters.torqueMax, 12);
-    uint16_t kpInt = convFloatToUint(kp, mMotorParameters.kpMin, mMotorParameters.kpMax, 12);
-    uint16_t kdInt = convFloatToUint(kd, mMotorParameters.kdMin, mMotorParameters.kdMax, 12);
+    int32_t pInt = convFloatToUint(position, mMotorParameters.positionMin, mMotorParameters.positionMax, 16);
+    int32_t vInt = convFloatToUint(velocity, mMotorParameters.velocityMin, mMotorParameters.velocityMax, 12);
+    int32_t tInt = convFloatToUint(torque, mMotorParameters.torqueMin, mMotorParameters.torqueMax, 12);
+    int32_t kpInt = convFloatToUint(kp, mMotorParameters.kpMin, mMotorParameters.kpMax, 12);
+    int32_t kdInt = convFloatToUint(kd, mMotorParameters.kdMin, mMotorParameters.kdMax, 12);
 
     uint8_t data[8];
     data[0] = pInt >> 8;
@@ -69,7 +69,7 @@ namespace TMotorActuators
     return state;
   }
 
-  uint32_t AkActuators::convFloatToUint(float val, float min, float max, uint8_t bits)
+  int32_t AkActuators::convFloatToUint(float val, float min, float max, uint8_t bits)
   {
     /* Limits. */
     if (val > max)
@@ -82,10 +82,10 @@ namespace TMotorActuators
     }
 
     float span = max - min;
-    return (uint32_t)((val - min) * ((float)((1 << bits) - 1)) / span);
+    return (int32_t)((val - min) * ((float)((1 << bits) - 1)) / span);
   }
 
-  float AkActuators::convUintToFloat(uint32_t val, float min, float max, uint8_t bits)
+  float AkActuators::convUintToFloat(int32_t val, float min, float max, uint8_t bits)
   {
     float span = max - min;
     return ((float)val) * span / ((float)((1 << bits) - 1)) + min;
